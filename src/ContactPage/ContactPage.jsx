@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './ContactPage.css';
@@ -24,6 +25,8 @@ const ContactPage = () => {
         }
     };
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event) => { 
 
         const firstNameMessage = validateInput(firstNameRef);
@@ -32,6 +35,7 @@ const ContactPage = () => {
 
         if (!firstNameMessage && !lastNameMessage && !emailMessage) {
             setValidationMessage("All inputs are valid. Form can be submitted.");
+            setTimeout(() => navigate('/'), 500);
 
         } else {
             event.preventDefault();

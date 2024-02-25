@@ -1,0 +1,62 @@
+.main-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 10rem 5rem 1.1rem 5rem;
+    line-height: 2;
+}
+
+.bailey span, .logo span{
+    color: hsl(344, 100%, 44%);
+}
+
+.bailey{
+    width: 50%;
+}
+
+.bailey h1{
+    font-size: 5em;
+}
+
+.bailey p{
+    font-size: 1.1em;
+}
+
+
+.bailey button{
+    background-color: hsl(344, 100%, 44%);
+    color: white;
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.bailey .skills{
+    font-size: 1.5em;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.bailey .skills-line{
+    width: 50%;
+}
+
+.bailey .icons{
+    font-size: 2em;
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.profile-pic img{
+    border: 2px solid hsl(344, 100%, 44%);
+    border-radius: 100px;
+    width: 50vh;
+    height: auto;
+    box-shadow: 3px 5px 5px 0 hsla(0, 0%, 4%, 0.7);
+}

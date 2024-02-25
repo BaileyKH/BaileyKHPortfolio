@@ -45,6 +45,7 @@ const ContactPage = () => {
                 <div className="form-wrapper">
                     <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
                         <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="redirect" value="/" />
                         <h1>Contact Me</h1>
                         <div className="input-box">
                             <input ref={firstNameRef} type="text" name="firstName" placeholder="First Name" />

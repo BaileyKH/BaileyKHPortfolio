@@ -2,8 +2,12 @@ import React, { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import './ContactPage.css';
+import Notification from '../Notification/Notification.jsx';
 
 const ContactPage = () => {
+
+    const [showNotification, setShowNotification] = useState(false);
+
     const firstNameRef = useRef(null);
     const lastNameRef = useRef(null);
     const emailRef = useRef(null);
@@ -33,6 +37,14 @@ const ContactPage = () => {
 
         if (!firstNameMessage && !lastNameMessage && !emailMessage) {
             setValidationMessage("All inputs are valid. Form can be submitted.");
+
+            setShowNotification(true);
+
+            setTimeout(() => {
+                setShowNotification(false);
+            }, 5000);
+
+            setValidationMessage("");
 
         } else {
             event.preventDefault();
@@ -68,6 +80,12 @@ const ContactPage = () => {
                         <button type="submit" className="btn">Submit</button>
                         {validationMessage && <p className="validation-message">{validationMessage}</p>}
                     </form>
+                    {showNotification && (
+                    <Notification
+                        message="Form submitted successfully!"
+                        onClose={() => setShowNotification(false)}
+                    />
+                )}
                 </div>
             </div>
         </div>

@@ -24,8 +24,7 @@ const ContactPage = () => {
         }
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault(); 
+    const handleSubmit = (event) => { 
 
         const firstNameMessage = validateInput(firstNameRef);
         const lastNameMessage = validateInput(lastNameRef);
@@ -35,6 +34,7 @@ const ContactPage = () => {
             setValidationMessage("All inputs are valid. Form can be submitted.");
 
         } else {
+            event.preventDefault();
             setValidationMessage("Please correct the highlighted fields.");
         }
     };
@@ -45,7 +45,6 @@ const ContactPage = () => {
                 <div className="form-wrapper">
                     <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
                         <input type="hidden" name="form-name" value="contact" />
-                        <input type="hidden" name="redirect" value="/" /> 
                         <h1>Contact Me</h1>
                         <div className="input-box">
                             <input ref={firstNameRef} type="text" name="firstName" placeholder="First Name" />

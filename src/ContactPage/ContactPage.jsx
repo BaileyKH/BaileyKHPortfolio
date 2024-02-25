@@ -10,7 +10,7 @@ const ContactPage = () => {
         <div className="background-img">
             <div className="form-body">
                 <div className="form-wrapper">
-                    <form action="">
+                    <form action="" netlify>
                         <h1>Contact Me</h1>
                         <div className="input-box">
                             <input id="firstName" type="text" placeholder="First Name" onblur="validateInputFirst()"/>

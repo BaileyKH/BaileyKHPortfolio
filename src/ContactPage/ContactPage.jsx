@@ -1,35 +1,69 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope, faMessage, faUser } from '@fortawesome/free-solid-svg-icons'
-import './ContactPage.css'; 
-
-
+import React, { useRef, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
+import './ContactPage.css';
 
 const ContactPage = () => {
-    return(
+    const firstNameRef = useRef(null);
+    const lastNameRef = useRef(null);
+    const emailRef = useRef(null);
+
+    const [validationMessage, setValidationMessage] = useState('');
+
+    const validateInput = (inputRef, validationType) => {
+        const inputElement = inputRef.current;
+        if (inputElement.value.trim() === '') {
+            inputElement.style.borderColor = 'red';
+            return 'This field is required';
+        } else if (validationType === 'email' && !inputElement.value.includes('@')) {
+            inputElement.style.borderColor = 'red';
+            return 'Please enter a valid email';
+        } else {
+            inputElement.style.borderColor = 'green';
+            return '';
+        }
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault(); 
+
+        const firstNameMessage = validateInput(firstNameRef);
+        const lastNameMessage = validateInput(lastNameRef);
+        const emailMessage = validateInput(emailRef, 'email');
+
+        if (!firstNameMessage && !lastNameMessage && !emailMessage) {
+            setValidationMessage("All inputs are valid. Form can be submitted.");
+
+        } else {
+            setValidationMessage("Please correct the highlighted fields.");
+        }
+    };
+
+    return (
         <div className="background-img">
             <div className="form-body">
                 <div className="form-wrapper">
-                    <form action="" netlify>
+                    <form onSubmit={handleSubmit} netlify>
                         <h1>Contact Me</h1>
                         <div className="input-box">
-                            <input id="firstName" type="text" placeholder="First Name" onblur="validateInputFirst()"/>
-                            <FontAwesomeIcon icon={faUser} style={{color: "#e0003c",}} className="icons"/>
+                            <input ref={firstNameRef} type="text" placeholder="First Name" />
+                            <FontAwesomeIcon icon={faUser} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">
-                            <input id="lastName" type="text" placeholder="Last Name" onblur="validateInputLast()"/>
-                            <FontAwesomeIcon icon={faUser} style={{color: "#e0003c",}} className="icons"/>
+                            <input ref={lastNameRef} type="text" placeholder="Last Name" />
+                            <FontAwesomeIcon icon={faUser} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">
-                            <input id="email" type="email" placeholder="Email" onblur="validateInputEmail()"/>
-                            <FontAwesomeIcon icon={faEnvelope} style={{color: "#e0003c",}} className="icons"/>
+                            <input ref={emailRef} type="email" placeholder="Email" />
+                            <FontAwesomeIcon icon={faEnvelope} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">
                             <textarea id="message" name="message" rows="4" cols="50" placeholder="Message"></textarea>
-                            <FontAwesomeIcon icon={faMessage} style={{color: "#e0003c",}} className="icons"/>
+                            <FontAwesomeIcon icon={faMessage} style={{color: "#e0003c"}} className="icons"/>
                         </div>
 
-                        <button id="submit" className="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
+                        {validationMessage && <p className="validation-message">{validationMessage}</p>}
                     </form>
                 </div>
             </div>

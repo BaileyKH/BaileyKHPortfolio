@@ -19,7 +19,7 @@
 
 .form-wrapper{
     width: 500px;
-    height: 650px;
+    height: 675px;
     background: transparent;
     border: 2px solid hsla(0, 0%, 100%, 0.4);
     backdrop-filter: blur(50px);
@@ -107,6 +107,7 @@ textarea::-webkit-scrollbar-track {
 
 .form-wrapper .btn{
     margin-top: 150px;
+    margin-bottom: 15px;
     width: 100%;
     height: 45px;
     background: hsl(344, 100%, 44%);
@@ -119,3 +120,4 @@ textarea::-webkit-scrollbar-track {
     color: white;
     font-weight: 600;
 }
+

@@ -43,18 +43,20 @@ const ContactPage = () => {
         <div className="background-img">
             <div className="form-body">
                 <div className="form-wrapper">
-                    <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit} >
+                    <form name="contact" method="POST" data-netlify="true" onSubmit={handleSubmit}>
+                        <input type="hidden" name="form-name" value="contact" />
+                        <input type="hidden" name="redirect" value="/" /> 
                         <h1>Contact Me</h1>
                         <div className="input-box">
-                            <input ref={firstNameRef} type="text" placeholder="First Name" />
+                            <input ref={firstNameRef} type="text" name="firstName" placeholder="First Name" />
                             <FontAwesomeIcon icon={faUser} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">
-                            <input ref={lastNameRef} type="text" placeholder="Last Name" />
+                            <input ref={lastNameRef} type="text" name="lastName" placeholder="Last Name" />
                             <FontAwesomeIcon icon={faUser} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">
-                            <input ref={emailRef} type="email" placeholder="Email" />
+                            <input ref={emailRef} type="email" name="email" placeholder="Email" />
                             <FontAwesomeIcon icon={faEnvelope} style={{color: "#e0003c"}} className="icons"/>
                         </div>
                         <div className="input-box">

@@ -43,7 +43,7 @@ const ContactPage = () => {
         <div className="background-img">
             <div className="form-body">
                 <div className="form-wrapper">
-                    <form onSubmit={handleSubmit} netlify>
+                    <form onSubmit={handleSubmit} netlify action="/" method="POST">
                         <h1>Contact Me</h1>
                         <div className="input-box">
                             <input ref={firstNameRef} type="text" placeholder="First Name" />
